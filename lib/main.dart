@@ -5,7 +5,7 @@ void main() {
     MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.red,
+        primarySwatch: Colors.blue,
       ),
       home: const HomePage(),
     ),
@@ -17,8 +17,10 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.red,
-    );
+    return Scaffold(
+        appBar: AppBar(title: const Text('Register')),
+        body: Center(
+            child:
+                TextButton(onPressed: () {}, child: const Text('Register'))));
   }
 }
