@@ -43,8 +43,16 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(title: const Text('Register')),
         body: Column(
           children: [
-            TextField(),
-            TextField(),
+            TextField(
+              controller: _email,
+              decoration:
+                  const InputDecoration(hintText: 'Enter your email here'),
+            ),
+            TextField(
+              controller: _password,
+              decoration:
+                  const InputDecoration(hintText: 'Enter your password here'),
+            ),
             TextButton(onPressed: () async {}, child: const Text('Register')),
           ],
         ));
