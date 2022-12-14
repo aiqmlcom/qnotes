@@ -12,7 +12,7 @@ void main() {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const RegisterView(),
+      home: const LoginView(),
     ),
   );
 }
@@ -84,6 +84,12 @@ class _RegisterViewState extends State<RegisterView> {
                             switch (e.code) {
                               case 'email-already-in-use':
                                 print('Email already in use');
+                                break;
+                              case 'weak-password':
+                                print('Weak password');
+                                break;
+                              case 'invalid-email':
+                                print('Invalid email');
                                 break;
                               default:
                                 print(e);
