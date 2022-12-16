@@ -5,7 +5,6 @@ import 'package:qnotes/firebase_options.dart';
 import 'package:qnotes/views/login_view.dart';
 import 'package:qnotes/views/register_view.dart';
 import 'package:qnotes/views/verify_email_view.dart';
-import 'dart:developer' as devtools show log;
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -82,6 +81,7 @@ class _NotesViewState extends State<NotesView> {
                     final shouldLogout = await showLogoutDialog(context);
                     if (shouldLogout) {
                       await FirebaseAuth.instance.signOut();
+                      if (!mounted) return;
                       Navigator.of(context)
                           .pushNamedAndRemoveUntil('/login/', (_) => false);
                     }
