@@ -75,7 +75,10 @@ class _LoginViewState extends State<LoginView> {
                       );
                       break;
                     case 'wrong-password':
-                      devtools.log('Wrong password');
+                      await showErrorDialog(
+                        context,
+                        'Wrong credentials',
+                      );
                       break;
                     default:
                       devtools.log(e.code);
