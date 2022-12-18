@@ -69,7 +69,10 @@ class _LoginViewState extends State<LoginView> {
                 } on FirebaseAuthException catch (e) {
                   switch (e.code) {
                     case 'user-not-found':
-                      devtools.log('User not found');
+                      await showErrorDialog(
+                        context,
+                        'User not found',
+                      );
                       break;
                     case 'wrong-password':
                       devtools.log('Wrong password');
@@ -92,4 +95,26 @@ class _LoginViewState extends State<LoginView> {
       ),
     );
   }
+}
+
+Future<void> showErrorDialog(
+  BuildContext context,
+  String text,
+) {
+  return showDialog(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: const Text('An error occurerd'),
+        content: Text(text),
+        actions: [
+          TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('OK'))
+        ],
+      );
+    },
+  );
 }
