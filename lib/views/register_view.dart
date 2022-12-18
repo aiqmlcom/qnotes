@@ -3,7 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:qnotes/constants/routes.dart';
 import 'package:qnotes/firebase_options.dart';
-import 'dart:developer' as devtools show log;
+import 'package:qnotes/utilities/show_error_dialog.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({super.key});
@@ -64,27 +64,41 @@ class _RegisterViewState extends State<RegisterView> {
                           final password = _password.text;
 
                           try {
-                            final userCredential = await FirebaseAuth.instance
+                            await FirebaseAuth.instance
                                 .createUserWithEmailAndPassword(
                                     email: email, password: password);
-                            devtools.log(userCredential.toString());
                           } on FirebaseAuthException catch (e) {
                             switch (e.code) {
                               case 'email-already-in-use':
-                                devtools.log('Email already in use');
+                                await showErrorDialog(
+                                  context,
+                                  'Email already in use',
+                                );
                                 break;
                               case 'weak-password':
-                                devtools.log('Weak password');
+                                await showErrorDialog(
+                                  context,
+                                  'Weak password',
+                                );
                                 break;
                               case 'invalid-email':
-                                devtools.log('Invalid email');
+                                await showErrorDialog(
+                                  context,
+                                  'Invalid email',
+                                );
                                 break;
                               default:
-                                devtools.log(e.toString());
+                                await showErrorDialog(
+                                  context,
+                                  'Error ${e.code}',
+                                );
                                 break;
                             }
                           } catch (e) {
-                            devtools.log(e.toString());
+                            await showErrorDialog(
+                              context,
+                              e.toString(),
+                            );
                           }
                         },
                         child: const Text('Register')),
