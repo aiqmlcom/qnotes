@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:qnotes/constants/routes.dart';
 import 'package:qnotes/services/auth/auth_service.dart';
 import 'package:qnotes/views/login_view.dart';
-import 'package:qnotes/views/notes/new_note_view.dart';
+import 'package:qnotes/views/notes/create_update_note_view.dart';
 import 'package:qnotes/views/notes/notes_view.dart';
 import 'package:qnotes/views/register_view.dart';
 import 'package:qnotes/views/verify_email_view.dart';
@@ -21,7 +21,7 @@ void main() {
         registerRoute: (context) => const RegisterView(),
         notesRoute: (context) => const NotesView(),
         verifyEmailRoute: (context) => const VerifyEmailView(),
-        newNoteRoute: (context) => const NewNoteView(),
+        createOrUpdateNoteRoute: (context) => const CreateUpdateNoteView(),
       },
     ),
   );
