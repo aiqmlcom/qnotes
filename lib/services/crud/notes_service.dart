@@ -51,7 +51,7 @@ class NotesService {
     await _ensureDbIsOpen();
     final db = _getDatabaseOrThrow();
 
-    // make sure not exists
+    // make sure note exists
     await getNote(id: note.id);
 
     final updatesCount = await db.update(noteTable, {

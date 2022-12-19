@@ -8,7 +8,7 @@ Future<bool> showDeleteDialog(BuildContext context) {
     content: 'Are you sure you want to delete this item?',
     optionBuilder: () => {
       'Cancel': false,
-      'Yes': false,
+      'Yes': true,
     },
   ).then((value) => value ?? false);
 }
