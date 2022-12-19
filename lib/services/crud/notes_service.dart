@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:qnotes/services/crud/crud_exceptions.dart';
 import 'package:sqflite/sqflite.dart';
@@ -7,6 +9,17 @@ import 'package:path/path.dart' show join;
 
 class NotesService {
   Database? _db;
+
+  List<DatabaseNote> _notes = [];
+
+  Future<void> _cacheNotes() async {
+    final allNotes = await getAllNotes();
+    _notes = allNotes.toList();
+    _notesStreamController.add(_notes);
+  }
+
+  final _notesStreamController =
+      StreamController<List<DatabaseNote>>.broadcast();
 
   Future<DatabaseNote> updateNote({
     required DatabaseNote note,
@@ -173,6 +186,8 @@ class NotesService {
       db.execute(createUserTable);
       // create note table
       db.execute(createNoteTable);
+
+      await _cacheNotes();
     } on MissingPlatformDirectoryException {
       throw UnableToGetDocumentsException();
     }
