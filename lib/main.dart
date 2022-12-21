@@ -61,8 +61,29 @@ class _HomePageState extends State<HomePage> {
                 ),
                 TextField(
                   controller: _controller,
-                  decoration: const InputDecoration(hintText: 'hint'),
+                  decoration: const InputDecoration(
+                    hintText: 'Enter a number here',
+                  ),
+                  keyboardType: TextInputType.number,
                 ),
+                Row(
+                  children: [
+                    TextButton(
+                        onPressed: () {
+                          context
+                              .read<CounterBloc>()
+                              .add(DecrementEvent(_controller.text));
+                        },
+                        child: const Text('-')),
+                    TextButton(
+                        onPressed: () {
+                          context
+                              .read<CounterBloc>()
+                              .add(IncrementEvent(_controller.text));
+                        },
+                        child: const Text('+')),
+                  ],
+                )
               ],
             );
           },
