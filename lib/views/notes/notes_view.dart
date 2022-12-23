@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qnotes/constants/routes.dart';
+import 'package:qnotes/enums/menu_action.dart';
+import 'package:qnotes/extensions/list/buildcontext/loc.dart';
 import 'package:qnotes/services/auth/auth_service.dart';
 import 'package:qnotes/services/auth/bloc/auth_bloc.dart';
 import 'package:qnotes/services/auth/bloc/auth_event.dart';
@@ -9,7 +11,11 @@ import 'package:qnotes/services/cloud/firebase_cloud_storage.dart';
 import 'package:qnotes/utilities/dialogs/logout_dialog.dart';
 import 'package:qnotes/views/notes/notes_list_view.dart';
 
-import '../../enums/menu_action.dart';
+extension Count<T extends Iterable> on Stream<T> {
+  Stream<int> get getLength => map(
+        (event) => event.length,
+      );
+}
 
 class NotesView extends StatefulWidget {
   const NotesView({super.key});
@@ -32,7 +38,17 @@ class _NotesViewState extends State<NotesView> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Your Notes'),
+          title: StreamBuilder(
+            stream: _notesService.allNotes(ownerUserId: userId).getLength,
+            builder: (context, AsyncSnapshot<int> snapshot) {
+              if (snapshot.hasData) {
+                final noteCount = snapshot.data ?? 0;
+                return Text(context.loc.notes_title(noteCount));
+              } else {
+                return const Text('');
+              }
+            },
+          ),
           actions: [
             IconButton(
               onPressed: () {
