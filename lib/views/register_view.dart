@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:qnotes/extensions/list/buildcontext/loc.dart';
 import 'package:qnotes/services/auth/auth_exceptions.dart';
 import 'package:qnotes/services/auth/auth_service.dart';
 import 'package:qnotes/services/auth/bloc/auth_bloc.dart';
@@ -38,18 +39,30 @@ class _RegisterViewState extends State<RegisterView> {
       listener: (context, state) async {
         if (state is AuthStateRegistering) {
           if (state.exception is WeakPasswordAuthException) {
-            await showErrorDialog(context, 'Weak password');
+            await showErrorDialog(
+              context,
+              context.loc.register_error_weak_password,
+            );
           } else if (state.exception is EmailAlreadyInUseAuthException) {
-            await showErrorDialog(context, 'Email already in use');
+            await showErrorDialog(
+              context,
+              context.loc.register_error_email_already_in_use,
+            );
           } else if (state.exception is InvaidEmailAuthException) {
-            await showErrorDialog(context, 'Invalid email');
+            await showErrorDialog(
+              context,
+              context.loc.register_error_invalid_email,
+            );
           } else if (state.exception is GenericAuthException) {
-            await showErrorDialog(context, 'Registration failedl');
+            await showErrorDialog(
+              context,
+              context.loc.register_error_generic,
+            );
           }
         }
       },
       child: Scaffold(
-          appBar: AppBar(title: const Text('Register')),
+          appBar: AppBar(title: Text(context.loc.register)),
           body: FutureBuilder(
             future: AuthService.firebase().initialize(),
             builder: (context, snapshot) {
@@ -61,24 +74,25 @@ class _RegisterViewState extends State<RegisterView> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text(
-                              'Enter your email and password to register!'),
+                          Text(context.loc.register_view_prompt),
                           TextField(
                             controller: _email,
                             enableSuggestions: false,
                             autocorrect: false,
                             autofocus: true,
                             keyboardType: TextInputType.emailAddress,
-                            decoration: const InputDecoration(
-                                hintText: 'Enter your email here'),
+                            decoration: InputDecoration(
+                                hintText:
+                                    context.loc.email_text_field_placeholder),
                           ),
                           TextField(
                             controller: _password,
                             obscureText: true,
                             enableSuggestions: false,
                             autocorrect: false,
-                            decoration: const InputDecoration(
-                                hintText: 'Enter your password here'),
+                            decoration: InputDecoration(
+                                hintText: context
+                                    .loc.password_text_field_placeholder),
                           ),
                           Center(
                             child: Column(
@@ -95,15 +109,17 @@ class _RegisterViewState extends State<RegisterView> {
                                             password,
                                           ));
                                     },
-                                    child: const Text('Register')),
+                                    child: Text(context.loc.register)),
                                 TextButton(
                                     onPressed: () {
                                       context.read<AuthBloc>().add(
                                             const AuthEventLogOut(),
                                           );
                                     },
-                                    child: const Text(
-                                        'Already registered? Login here!'))
+                                    child: Text(
+                                      context
+                                          .loc.register_view_already_registered,
+                                    ))
                               ],
                             ),
                           ),
