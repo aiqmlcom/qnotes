@@ -1,37 +1,37 @@
 {
 
-    "logout_button": "Log out",
-    "note": "Note",
-    "cancel": "Cancel",
-    "yes": "Yes",
-    "delete": "Delete",
-    "sharing": "Sharing",
-    "ok": "OK",
-    "login": "Login",
-    "verify_email": "Verify email",
-    "register": "Register",
-    "restart": "Restart",
+    "logout_button": "පිටවීම",
+    "note": "සටහන",
+    "cancel": "අවලංගු කරන්න",
+    "yes": "ඔව්",
+    "delete": "මකන්න",
+    "sharing": "බෙදාගන්න",
+    "ok": "හරි ",
+    "login": "ඇතුල් වන්න",
+    "verify_email": "විද්‍යුත් තැපෑල තහවුරු කරන්න",
+    "register": "ලියාපදිංචි වීම",
+    "restart": "නැවත මුල සිට අරඹන්න",
 
-    "start_typing_your_note": "Start typing your note",
-    "delete_note_prompt": "Are you sure you want to delete this note?",
-    "cannot_share_empty_note_prompt": "Cannot share an empty note!",
-    "generic_error_prompt": "An error occurred",
-    "logout_dialog_prompt": "Are you sure you want to log out?",
+    "start_typing_your_note": "මෙතන සටහන් කරන්න...",
+    "delete_note_prompt": "ඔයාට මේක මකන්න ඕන කියල විශ්වාසද?",
+    "cannot_share_empty_note_prompt": "හිස් සටහනක් බෙදා ගන්න බෑ. මොනවහරි ලියන්න.",
+    "generic_error_prompt": "මොකක්හරි වැරද්දක් වුනා",
+    "logout_dialog_prompt": "ඔයාට පිටවෙන්න ඕන කියල විශ්වාසද?",
 
-    "password_reset": "Password reset",
+    "password_reset": "මුරපදය නැවත සැකසීම",
     "password_reset_dialog_prompt": "We have now sent you a password reset link. Please check your email for more information.",
 
     "login_error_cannot_find_user": "Cannot find a user with the entered credentials!",
     "login_error_wrong_credentials": "Wrong credentials",
     "login_error_auth_error": "Authentication error",
 
-    "login_view_prompt": "Please log in to your account in order to interact with and create notes!",
+    "login_view_prompt": "සටහන් තැබීමට ඔබගේ ගිණුමට ඇතුළු වන්න. පරිශීලක නාමය සහ මුරපදය ඇතුලත් කරන්න.",
     
-    "login_view_forgot_password": "I forgot my password",
-    "login_view_not_registered_yet": "Not registered yet? Register here!",
+    "login_view_forgot_password": "මට මුරපදය මතක නෑ",
+    "login_view_not_registered_yet": "තාම ලියාපදිංචි නැද්ද? මෙතනින් ලියාපදිංචි වෙන්න.!",
 
-    "email_text_field_placeholder": "Enter your email here",
-    "password_text_field_placeholder": "Enter your password here",
+    "email_text_field_placeholder": "විද්‍යුත් තැපැල් ලිපිනය මෙතන යොදන්න...",
+    "password_text_field_placeholder": "මුරපදය මෙතන යොදන්න...",
     
     "forgot_password": "Forgot Password",
     "forgot_password_view_generic_error": "We could not process your request. Please make sure that you are a registered user, or if not, register a user now by going back one step.",
@@ -49,7 +49,7 @@
     "verify_email_view_prompt": "We've sent you an email verification. Please open it to verify your account. If you haven't received a verification email yet, press the button below!",
     "verify_email_send_email_verification": "Send email verification",
 
-    "notes_title": "{count, plural, =0{No notes yet} =1{1 note} other{{count} notes}}",
+    "notes_title": "{count, plural, =0{සටහන් එකක්වත් නෑ} =1{සටහන් එකයි} other{සටහන් {count}ක් තියෙනවා}}",
     "@notes_title": {
         "placeholders": {
             "count": {
