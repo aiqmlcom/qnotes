@@ -28,7 +28,7 @@
     "login_view_prompt": "සටහන් තැබීමට ඔබගේ ගිණුමට ඇතුළු වන්න. පරිශීලක නාමය සහ මුරපදය ඇතුලත් කරන්න.",
     
     "login_view_forgot_password": "මට මුරපදය මතක නෑ",
-    "login_view_not_registered_yet": "තාම ලියාපදිංචි නැද්ද? මෙතනින් ලියාපදිංචි වෙන්න.!",
+    "login_view_not_registered_yet": "තාම ලියාපදිංචි නැද්ද? මෙතනින් ලියාපදිංචි වෙන්න!",
 
     "email_text_field_placeholder": "විද්‍යුත් තැපැල් ලිපිනය මෙතන යොදන්න...",
     "password_text_field_placeholder": "මුරපදය මෙතන යොදන්න...",
